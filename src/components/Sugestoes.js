@@ -1,70 +1,28 @@
-export default function Sugestoes(){
-    return(
-        <div class="sugestoes">
-                    <div class="titulo">
-                        Sugestões para você
-                        <div>Ver tudo</div>
-                    </div>
-
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="assets/img/bad.vibes.memes.svg" />
-                            <div class="texto">
-                                <div class="nome">bad.vibes.memes</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-
-                        <div class="seguir">Seguir</div>
-                    </div>
-
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="assets/img/chibirdart.svg" />
-                            <div class="texto">
-                                <div class="nome">chibirdart</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-
-                        <div class="seguir">Seguir</div>
-                    </div>
-
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="assets/img/razoesparaacreditar.svg" />
-                            <div class="texto">
-                                <div class="nome">razoesparaacreditar</div>
-                                <div class="razao">Novo no Instagram</div>
-                            </div>
-                        </div>
-
-                        <div class="seguir">Seguir</div>
-                    </div>
-
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="assets/img/adorable_animals.svg" />
-                            <div class="texto">
-                                <div class="nome">adorable_animals</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-
-                        <div class="seguir">Seguir</div>
-                    </div>
-
-                    <div class="sugestao">
-                        <div class="usuario">
-                            <img src="assets/img/smallcutecats.svg" />
-                            <div class="texto">
-                                <div class="nome">smallcutecats</div>
-                                <div class="razao">Segue você</div>
-                            </div>
-                        </div>
-
-                        <div class="seguir">Seguir</div>
-                    </div>
+export default function Sugestoes() {
+    const sugestoes = [
+        { icone: "assets/img/bad.vibes.memes.svg", user: "bad.vibes.memes" },
+        { icone: "assets/img/chibirdart.svg", user: "chibirdart" },
+        { icone: "assets/img/razoesparaacreditar.svg", user: "razoesparaacreditar" },
+        { icone: "assets/img/adorable_animals.svg", user: "adorable_animals" },
+        { icone: "assets/img/smallcutecats.svg", user: "smallcutecats" }
+    ]
+    return (
+        sugestoes.map((item) => <Sugestao icone={item.icone} user={item.user} />)
+    )
+}
+function Sugestao(props) {
+    
+    return (
+        <div class="sugestao">
+            <div class="usuario">
+                <img src={props.icone} />
+                <div class="texto">
+                    <div class="nome">{props.user}</div>
+                    <div class="razao">Segue você</div>
                 </div>
+            </div>
+
+            <div class="seguir">Seguir</div>
+        </div>
     )
 }
