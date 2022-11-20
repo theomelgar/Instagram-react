@@ -10,16 +10,16 @@ export default function Stories() {
         { icone: "assets/img/memeriagourmet.svg", user: "memeriagourmet" }
     ]
     return (
-        stories.map((item) => <Story icone={item.icone} user={item.user} />)
+        stories.map((item) => <Story key={item.user} icone={item.icone} user={item.user} />)
     )
 }
 function Story(props) {
     return (
-        <div class="story">
-            <div class="imagem">
+        <div className="story">
+            <div className="imagem">
                 <img src={props.icone} />
             </div>
-            <div class="usuario">
+            <div className="usuario">
                 {props.user}
             </div>
         </div>

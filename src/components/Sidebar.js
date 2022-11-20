@@ -2,10 +2,10 @@ import Sugestoes from "./Sugestoes"
 import Usuario from "./Usuario"
 export default function Sidebar() {
     return (
-        <div class="sidebar">
+        <div className="sidebar">
             <Usuario />
-            <div class="sugestoes">
-                <div class="titulo">
+            <div className="sugestoes">
+                <div className="titulo">
                     Sugestões para você
                     <div>Ver tudo</div>
                 </div>
@@ -13,12 +13,12 @@ export default function Sidebar() {
             </div>
 
 
-            <div class="links">
+            <div className="links">
                 Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes •
                 Hashtags • Idioma
             </div>
 
-            <div class="copyright">
+            <div className="copyright">
                 © 2021 INSTAGRAM DO FACEBOOK
             </div>
         </div>

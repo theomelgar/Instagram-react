@@ -3,16 +3,16 @@ import Stories from "./Stories"
 import Posts from "./Posts"
 export default function Corpo() {
     return (
-        <div class="corpo">
-            <div class="esquerda">
-                <div class="stories">
+        <div className="corpo">
+            <div className="esquerda">
+                <div className="stories">
                     <Stories />
-                    <div class="setinha">
+                    <div className="setinha">
                         <ion-icon name="chevron-forward-circle"></ion-icon>
                     </div>
                 </div>
 
-                <div class="posts">
+                <div className="posts">
                     <Posts />
                 </div>
             </div>
