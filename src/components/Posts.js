@@ -2,29 +2,42 @@
 import React from "react"
 export default function Posts() {
     const post = [
-        { icone: "assets/img/meowed.svg", usuario: "meowed", conteudo: "assets/img/gato-telefone.svg", likes: "assets/img/respondeai.svg", usuarioLike: "respondeai", numeroLikes: "101.523" },
-        { icone: "assets/img/barked.svg", usuario: "barked", conteudo: "assets/img/dog.svg", likes: "assets/img/adorable_animals.svg", usuarioLike: "adorable_animals", numeroLikes: "99.159" }
+        { icone: "assets/img/meowed.svg", usuario: "meowed", conteudo: "assets/img/gato-telefone.svg", likes: "assets/img/respondeai.svg", usuarioLike: "respondeai", numeroLikes: "101523" },
+        { icone: "assets/img/barked.svg", usuario: "barked", conteudo: "assets/img/dog.svg", likes: "assets/img/adorable_animals.svg", usuarioLike: "adorable_animals", numeroLikes: "99159" }
     ]
-    
+
     return (
         post.map((item) => <Post key={item.conteudo} icone={item.icone} usuario={item.usuario} conteudo={item.conteudo} likes={item.likes} usuarioLike={item.usuarioLike} numeroLikes={item.numeroLikes} />)
     )
 }
 function Post(props) {
     const [salvo, setSalvo] = React.useState(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
+
     function salvar() {
         setSalvo(<ion-icon onClick={removeSalvar} name="bookmark"></ion-icon>)
     }
-    function removeSalvar(){
+    function removeSalvar() {
         setSalvo(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
     }
+
     const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
     function curtir() {
-        setLike(<ion-icon id="vermelho" onClick={removeCurtir}  name="heart"></ion-icon>)
+        setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
+        SetNumeroLikes(Number(numeroLikes) + 1)
+        
     }
-    function removeCurtir(){
+    function removeCurtir() {
         setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
+        if (numeroLikes > 0) {
+            SetNumeroLikes(Number(numeroLikes))
+        }
+        
+       
     }
+
+    const [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
+  
+    
     return (
 
         <div className="post">
@@ -58,7 +71,7 @@ function Post(props) {
                 <div className="curtidas">
                     <img src={props.likes} />
                     <div className="texto">
-                        Curtido por <strong>{props.usuarioLike}</strong> e <strong>outras {props.numeroLikes} pessoas</strong>
+                        Curtido por <strong>{props.usuarioLike}</strong> e <strong>outras {numeroLikes} pessoas</strong>
                     </div>
                 </div>
             </div>
