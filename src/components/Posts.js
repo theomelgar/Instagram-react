@@ -18,6 +18,13 @@ function Post(props) {
     function removeSalvar(){
         setSalvo(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
     }
+    const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
+    function curtir() {
+        setLike(<ion-icon id="vermelho" onClick={removeCurtir}  name="heart"></ion-icon>)
+    }
+    function removeCurtir(){
+        setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
+    }
     return (
 
         <div className="post">
@@ -38,7 +45,7 @@ function Post(props) {
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        {like}
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
