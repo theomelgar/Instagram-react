@@ -420,37 +420,3 @@ ion-icon {
 #vermelho {
   color: red;
 }
-
-/* #likeFoto {
-  position: absolute;
-  top: 85vh;
-  left: 75vh;
-  color: white;
-  font-size: 100px;
-  z-index: 3;
-  animation-duration: 300ms;
-  animation-name: like-heart-animation;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes like-heart-animation {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  15% {
-    opacity: .9;
-    transform: scale(1.2);
-  }
-
-  30% {
-    transform: scale(.95);
-  }
-
-  45%,
-  80% {
-    opacity: .9;
-    transform: scale(1);
-  }
-} */

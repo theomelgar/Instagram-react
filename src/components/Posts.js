@@ -1,4 +1,5 @@
 import React from "react"
+
 export default function Posts() {
     const post = [
         { icone: "assets/img/meowed.svg", usuario: "meowed", conteudo: "assets/img/gato-telefone.svg", likes: "assets/img/respondeai.svg", usuarioLike: "respondeai", numeroLikes: "101523" },
@@ -9,10 +10,10 @@ export default function Posts() {
         post.map((item) => <Post key={item.conteudo} icone={item.icone} usuario={item.usuario} conteudo={item.conteudo} likes={item.likes} usuarioLike={item.usuarioLike} numeroLikes={item.numeroLikes} />)
     )
 }
-var i = 0;
+
 function Post(props) {
     const [salvo, setSalvo] = React.useState(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
-
+    const [like, setLike] = React.useState(false)
     function salvar() {
         setSalvo(<ion-icon onClick={removeSalvar} name="bookmark"></ion-icon>)
     }
@@ -20,50 +21,27 @@ function Post(props) {
         setSalvo(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
     }
 
-    const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-
     function curtir() {
-        
-        if (i === 0) {
-            setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
-            SetNumeroLikes(Number(numeroLikes) + 1)
-            i++;
+        setLike(!like);
+        if (like === true) {
+            SetNumeroLikes(numeroLikes - 1)
         }
-    }
-    function removeCurtir() {
-        setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-        if (i === 1) {
-            SetNumeroLikes(Number(numeroLikes))
-            i--;
-        }
-    }
-    // const [likeFoto, setLikeFoto] = React.useState(<img onDoubleClick={curtirFoto} src={props.conteudo} />)
 
-    // function curtirFoto() {
-    //     setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
-    //     if (numeroLikes == props.numeroLikes) {
-    //         SetNumeroLikes(Number(numeroLikes) + 1)
-    //     }
-    //     setLikeFoto(<>
-    //     <ion-icon id="likeFoto" name="heart"></ion-icon><img onDoubleClick={curtirFoto} src={props.conteudo} />
-    //     </>)
-    // }
+        else {
+            SetNumeroLikes(numeroLikes + 1)
+        }
+    }
+
+    function curtirFoto() {
+        if (like === false) {
+            SetNumeroLikes(numeroLikes + 1)
+        }
+        setLike(true)
+    }
+
+
     let [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
 
-    const handleClick = event => {
-        // 👇️ toggle styles on click
-        if (event.currentTarget.style.backgroundColor) {
-          event.currentTarget.style.backgroundColor = null;
-          event.currentTarget.style.color = null;
-        } else {
-          event.currentTarget.style.backgroundColor = 'salmon';
-          event.currentTarget.style.color = 'white';
-        }
-    
-        // 👇️ toggle class on click
-        event.currentTarget.classList.toggle('my-class-1', 'my-class-2');
-        curtir();
-    }
 
     return (
 
@@ -79,14 +57,16 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img data-test="post-image" onDoubleClick={handleClick} src={props.conteudo} />
-            {/* <ion-icon id="likeFoto" name="heart"></ion-icon> */}
+                <img data-test="post-image" onDoubleClick={curtirFoto} src={props.conteudo} />
+
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <span data-test="like-post">{like}</span>
+                        <span data-test="like-post" onClick={curtir}>
+                            {like ? (<ion-icon id="vermelho" name="heart"></ion-icon>) : (<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)}
+                        </span>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
