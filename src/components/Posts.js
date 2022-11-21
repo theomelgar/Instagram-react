@@ -1,4 +1,3 @@
-// import Post from "./Post"
 import React from "react"
 export default function Posts() {
     const post = [
@@ -10,7 +9,7 @@ export default function Posts() {
         post.map((item) => <Post key={item.conteudo} icone={item.icone} usuario={item.usuario} conteudo={item.conteudo} likes={item.likes} usuarioLike={item.usuarioLike} numeroLikes={item.numeroLikes} />)
     )
 }
-var i=0;
+var i = 0;
 function Post(props) {
     const [salvo, setSalvo] = React.useState(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
 
@@ -22,17 +21,18 @@ function Post(props) {
     }
 
     const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-    
+
     function curtir() {
+        
         if (i === 0) {
-        setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
+            setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
             SetNumeroLikes(Number(numeroLikes) + 1)
             i++;
         }
     }
     function removeCurtir() {
         setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-        if(i===1){
+        if (i === 1) {
             SetNumeroLikes(Number(numeroLikes))
             i--;
         }
@@ -50,10 +50,23 @@ function Post(props) {
     // }
     let [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
 
+    // const handleClick = event => {
+    //     // 👇️ toggle styles on click
+    //     if (event.currentTarget.style.backgroundColor) {
+    //       event.currentTarget.style.backgroundColor = null;
+    //       event.currentTarget.style.color = null;
+    //     } else {
+    //       event.currentTarget.style.backgroundColor = 'salmon';
+    //       event.currentTarget.style.color = 'white';
+    //     }
+    
+    //     // 👇️ toggle class on click
+    //     event.currentTarget.classList.toggle('my-class-1', 'my-class-2');
+    // }
 
     return (
 
-        <div className="post">
+        <div data-test="post" className="post">
             <div className="topo">
                 <div className="usuario">
                     <img src={props.icone} />
@@ -65,26 +78,26 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img onDoubleClick={curtir} src={props.conteudo} />
+                <img data-test="post-image" onDoubleClick={curtir} src={props.conteudo} />
+            {/* <ion-icon id="likeFoto" name="heart"></ion-icon> */}
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        {like}
+                        <div data-test="like-post">{like}</div>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
-                    <div>
+                    <div data-test="save-post">
                         {salvo}
-
                     </div>
                 </div>
 
                 <div className="curtidas">
                     <img src={props.likes} />
                     <div className="texto">
-                        Curtido por <strong>{props.usuarioLike}</strong> e <strong>outras {numeroLikes} pessoas</strong>
+                        Curtido por <strong>{props.usuarioLike}</strong> e <strong>outras <span data-test="likes-number">{numeroLikes}</span> pessoas</strong>
                     </div>
                 </div>
             </div>

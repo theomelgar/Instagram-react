@@ -13,13 +13,13 @@ export default function Usuario() {
         setFoto(resposta)
     }
     return (
-        <div className="usuario">
-            <img onClick={inserirFoto} src={foto} />
+        <div data-test="user" className="usuario">
+            <img data-test="profile-image" onClick={inserirFoto} src={foto} />
             <div className="texto">
                 <strong>{apelido}</strong>
                 <span>
-                    {user}
-                    <ion-icon onClick={inserirUsuario} name="pencil"></ion-icon>
+                    <div data-test="name">{user}</div>
+                    <ion-icon data-test="edit-name" onClick={inserirUsuario} name="pencil"></ion-icon>
                 </span>
             </div>
         </div>
