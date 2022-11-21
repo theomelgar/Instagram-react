@@ -23,21 +23,35 @@ function Post(props) {
     const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
     function curtir() {
         setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
-        SetNumeroLikes(Number(numeroLikes) + 1)
-        
+        if(numeroLikes==props.numeroLikes){
+            SetNumeroLikes(Number(numeroLikes) + 1)
+        }
     }
     function removeCurtir() {
         setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
         if (numeroLikes > 0) {
             SetNumeroLikes(Number(numeroLikes))
         }
-        
-       
-    }
 
+
+    }
+    // const [likeFoto, setLikeFoto] = React.useState(<img onDoubleClick={curtir} src={props.conteudo} />)
+    // function curtir() {
+    //     setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
+    //     SetNumeroLikes(Number(numeroLikes) + 1)
+    //     setLikeFoto(<img onDoubleClick={removeCurtir} src={props.conteudo} />)
+
+    // }
+    // function removeCurtir() {
+    //     setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
+    //     if (numeroLikes > 0) {
+    //         SetNumeroLikes(Number(numeroLikes))
+    //         setLikeFoto(<img onDoubleClick={curtir} src={props.conteudo} />)
+    //     }
+    // }
     const [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
-  
-    
+
+
     return (
 
         <div className="post">
@@ -52,7 +66,7 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img src={props.conteudo} />
+                <img onDoubleClick={curtir} src={props.conteudo} />
             </div>
 
             <div className="fundo">
