@@ -10,6 +10,7 @@ export default function Posts() {
         post.map((item) => <Post key={item.conteudo} icone={item.icone} usuario={item.usuario} conteudo={item.conteudo} likes={item.likes} usuarioLike={item.usuarioLike} numeroLikes={item.numeroLikes} />)
     )
 }
+var i=0;
 function Post(props) {
     const [salvo, setSalvo] = React.useState(<ion-icon onClick={salvar} name="bookmark-outline"></ion-icon>)
 
@@ -21,35 +22,33 @@ function Post(props) {
     }
 
     const [like, setLike] = React.useState(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
+    
     function curtir() {
+        if (i === 0) {
         setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
-        if(numeroLikes==props.numeroLikes){
             SetNumeroLikes(Number(numeroLikes) + 1)
+            i++;
         }
     }
     function removeCurtir() {
         setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-        if (numeroLikes > 0) {
+        if(i===1){
             SetNumeroLikes(Number(numeroLikes))
+            i--;
         }
-
-
     }
-    // const [likeFoto, setLikeFoto] = React.useState(<img onDoubleClick={curtir} src={props.conteudo} />)
-    // function curtir() {
-    //     setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
-    //     SetNumeroLikes(Number(numeroLikes) + 1)
-    //     setLikeFoto(<img onDoubleClick={removeCurtir} src={props.conteudo} />)
+    // const [likeFoto, setLikeFoto] = React.useState(<img onDoubleClick={curtirFoto} src={props.conteudo} />)
 
-    // }
-    // function removeCurtir() {
-    //     setLike(<ion-icon onClick={curtir} name="heart-outline"></ion-icon>)
-    //     if (numeroLikes > 0) {
-    //         SetNumeroLikes(Number(numeroLikes))
-    //         setLikeFoto(<img onDoubleClick={curtir} src={props.conteudo} />)
+    // function curtirFoto() {
+    //     setLike(<ion-icon id="vermelho" onClick={removeCurtir} name="heart"></ion-icon>)
+    //     if (numeroLikes == props.numeroLikes) {
+    //         SetNumeroLikes(Number(numeroLikes) + 1)
     //     }
+    //     setLikeFoto(<>
+    //     <ion-icon id="likeFoto" name="heart"></ion-icon><img onDoubleClick={curtirFoto} src={props.conteudo} />
+    //     </>)
     // }
-    const [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
+    let [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
 
 
     return (

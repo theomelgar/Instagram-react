@@ -182,6 +182,7 @@ body {
 
 .post .conteudo img {
   width: 100%;
+  position: relative;
 }
 
 .post .fundo .acoes {
@@ -401,4 +402,16 @@ ion-icon {
 }
 #vermelho{
   color:red;
+}
+.conteudo:hover ion-icon{
+  animation-duration: 1000ms;
+  animation-name: like-heart-animation;
+  animation-timing-function: ease-in-out;
+}
+@keyframes like-heart-animation{ 
+  0% { opacity:0; transform:scale(0); }
+  15% { opacity:.9; transform:scale(1.2); }
+  30% { transform:scale(.95); }
+  45%,
+  80% { opacity:.9; transform:scale(1); }
 }
