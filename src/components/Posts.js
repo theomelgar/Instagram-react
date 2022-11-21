@@ -50,19 +50,20 @@ function Post(props) {
     // }
     let [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
 
-    // const handleClick = event => {
-    //     // 👇️ toggle styles on click
-    //     if (event.currentTarget.style.backgroundColor) {
-    //       event.currentTarget.style.backgroundColor = null;
-    //       event.currentTarget.style.color = null;
-    //     } else {
-    //       event.currentTarget.style.backgroundColor = 'salmon';
-    //       event.currentTarget.style.color = 'white';
-    //     }
+    const handleClick = event => {
+        // 👇️ toggle styles on click
+        if (event.currentTarget.style.backgroundColor) {
+          event.currentTarget.style.backgroundColor = null;
+          event.currentTarget.style.color = null;
+        } else {
+          event.currentTarget.style.backgroundColor = 'salmon';
+          event.currentTarget.style.color = 'white';
+        }
     
-    //     // 👇️ toggle class on click
-    //     event.currentTarget.classList.toggle('my-class-1', 'my-class-2');
-    // }
+        // 👇️ toggle class on click
+        event.currentTarget.classList.toggle('my-class-1', 'my-class-2');
+        curtir();
+    }
 
     return (
 
@@ -78,7 +79,7 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img data-test="post-image" onDoubleClick={curtir} src={props.conteudo} />
+                <img data-test="post-image" onDoubleClick={handleClick} src={props.conteudo} />
             {/* <ion-icon id="likeFoto" name="heart"></ion-icon> */}
             </div>
 

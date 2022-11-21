@@ -5,8 +5,10 @@ export default function Usuario() {
     const [foto, setFoto] = React.useState("assets/img/catanacomics.svg")
     function inserirUsuario() {
         let resposta = prompt("Qual o nome do seu usuario?")
-        setUser(resposta)
-        setApelido(resposta)
+        if (resposta !== "" && resposta !== null && resposta !== " ") {
+            setUser(resposta)
+            setApelido(resposta)
+        }
     }
     function inserirFoto() {
         let resposta = prompt("Qual o link da imagem?")
