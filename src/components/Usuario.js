@@ -7,10 +7,13 @@ export default function Usuario() {
         let resposta = prompt("Qual o nome do seu usuario?")
         setUser(resposta)
         setApelido(resposta)
-    } 
+    }
     function inserirFoto() {
         let resposta = prompt("Qual o link da imagem?")
-        setFoto(resposta)
+        if (resposta !== "" && resposta !== null) {
+            setFoto(resposta)
+            console.log(resposta)
+        }
     }
     return (
         <div data-test="user" className="usuario">

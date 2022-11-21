@@ -85,7 +85,7 @@ function Post(props) {
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <div data-test="like-post">{like}</div>
+                        <span data-test="like-post">{like}</span>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
