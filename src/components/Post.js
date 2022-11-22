@@ -20,16 +20,29 @@ export default function Post(props) {
         }
     }
 
-    function curtirFoto() {
-        if (like === false) {
-            SetNumeroLikes(numeroLikes + 1)
-        }
-        setLike(true)
-    }
+    // function curtirFoto() {
+    //     if (like === false) {
+    //         SetNumeroLikes(numeroLikes + 1)
+    //     }
+    //     setLike(true)
+    // }
 
 
     let [numeroLikes, SetNumeroLikes] = React.useState(Number(props.numeroLikes))
 
+    const [animation, setAnimation] = React.useState(false)
+    function clickImage(event) {
+        if (event.detail === 2) {
+            setAnimation(true)
+            if (like === false) {
+                SetNumeroLikes(numeroLikes + 1)
+                setLike(true)
+            }
+            setTimeout(() => {
+                setAnimation(false)
+            }, 500)
+        }
+    }
 
     return (
 
@@ -45,8 +58,9 @@ export default function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img data-test="post-image" onDoubleClick={curtirFoto} src={props.conteudo} />
-
+                {/* <img data-test="post-image" onDoubleClick={curtirFoto} src={props.conteudo} /> */}
+                <img onClick={clickImage} src={props.conteudo} />
+                <ion-icon class={`coracao ${animation ? "scale-up-center" : "invisible"}`} name="heart"></ion-icon>
             </div>
 
             <div className="fundo">
